@@ -6,21 +6,19 @@ def _init_answer_store():
         st.session_state.answers = {}
 
 def refresh_page(delay: float = 0.5):
-    """
-    Forces a rerun after an optional delay.
-    """
     time.sleep(delay)
-    st.experimental_rerun()
+    st.rerun()
 
-def answers(question_id, options):
-    """
-    Multiple-choice question widget with answer validation and storage.
-    """
+def answers(question_id, options, label= None, py_ex= None):
     _init_answer_store()
 
     answered_correctly = st.session_state.answers.get(question_id, {}).get("correct", False)
 
-    st.subheader(f"Question: {question_id}")
+    st.subheader(f"Question: {label or question_id}")
+    
+    if py_ex:
+        st.code(py_ex, language = "python")
+
 
     if answered_correctly:
         selected = st.session_state.answers[question_id]["user_answer"]
@@ -43,15 +41,15 @@ def answers(question_id, options):
                     wrong()
     return False
 
-def strans(question_id, correct_answers):
-    """
-    Text input question with multiple valid answers.
-    """
+def strans(question_id, correct_answers, label= None, py_ex = None):
+   
     _init_answer_store()
 
     answered_correctly = st.session_state.answers.get(question_id, {}).get("correct", False)
 
-    st.subheader(f"Question: {question_id}")
+    st.subheader(f"Question: {label or question_id}")
+    if py_ex:
+        st.code(py_ex, language = "python")
 
     if answered_correctly:
         saved = st.session_state.answers[question_id]["user_answer"]
@@ -61,7 +59,7 @@ def strans(question_id, correct_answers):
     user_input = st.text_input("Your answer:", key=f"input_{question_id}")
 
     if user_input:
-        if user_input.strip().lower() in [ans.lower() for ans in correct_answers]:
+        if user_input.strip() in [ans for ans in correct_answers]:
             st.session_state.answers[question_id] = {
                 "correct": True,
                 "user_answer": user_input.strip()
@@ -77,9 +75,6 @@ def wrong():
     st.error("❌ Try again.")
 
 def ttxt(tip, second):
-    """
-    Displays a timed tip with countdown.
-    """
     placeholder = st.empty()
     for remaining in range(second, 0, -1):
         placeholder.info(f"🕒 Your tip will appear in {remaining} seconds...")
