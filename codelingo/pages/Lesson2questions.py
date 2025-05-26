@@ -1,5 +1,6 @@
 import streamlit as st
 from answer import answers, strans, ttxt, refresh_page
+from streamlit_extras.switch_page_button import switch_page 
 
 st.title("Lesson 1: Variable Basics")
 
@@ -33,7 +34,7 @@ q2 = answers("q2_value", [
 ], "What is the value of x after `x = 5`?")
 
 
-q3 = strans("q3_type", ["str", "string", "String"], "What is the data type of x = 'Hello'?")
+q3 = strans("q3_type", ["str", "string", "String", "Str"], "What is the data type of x = 'Hello'?")
 
 if not st.session_state.tip_q3_1:
     if st.button("Want a tip for Q3?"):
@@ -52,4 +53,5 @@ if not (q1 and q2 and q3):
     st.warning("⏳ Please answer all questions correctly to continue.")
 else:
     st.success("🎉 All questions correct! You may proceed.")
-    st.page_link("pages/Lesson3.py", label="Go to Next Lesson")
+    if st.button("Next lesson"):
+        st.switch_page("pages/Lesson3.py")

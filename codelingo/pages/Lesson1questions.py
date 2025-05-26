@@ -50,7 +50,7 @@ if not st.session_state.tip_q2_1:
         ttxt("Multiplications comes before addition", 3)
         st.session_state.tip_q2_1 = True
 
-q3 = strans("q3_string", ["""print("ninety nine dogs")"""])
+q3 = strans("q3_string", ["""print("ninety nine dogs")""" , "print('ninety nine dogs')"], "How will you print 'ninety nine dogs")
 
 if not st.session_state.tip_q3:
     if st.button("Need a tip for Q3?"):
@@ -65,4 +65,5 @@ if not (q1 and q2 and q3):
     st.warning("⏳ Please answer all questions correctly to continue.")
 else:
     st.success("🎉 All questions correct! You may proceed.")
-    st.page_link("pages/Lesson3.py", label="Go to Next Lesson")
+    if st.button("Next lesson"):
+        st.switch_page("pages/Lesson2.py")

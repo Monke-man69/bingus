@@ -5,10 +5,6 @@ def _init_answer_store():
     if "answers" not in st.session_state:
         st.session_state.answers = {}
 
-def refresh_page(delay: float = 0.5):
-    time.sleep(delay)
-    st.rerun()
-
 def answers(question_id, options, label= None, py_ex= None):
     _init_answer_store()
 
@@ -68,7 +64,7 @@ def strans(question_id, correct_answers, label= None, py_ex = None):
             refresh_page()
             return True
         else:
-            st.error("❌ Try again.")
+            wrong()
     return False
 
 def wrong():
@@ -80,3 +76,7 @@ def ttxt(tip, second):
         placeholder.info(f"🕒 Your tip will appear in {remaining} seconds...")
         time.sleep(1)
     placeholder.success(tip)
+
+def refresh_page(delay: float = 0.5):
+    time.sleep(delay)
+    st.rerun()

@@ -9,4 +9,5 @@ print(x)'''
 st.code(code_example, language='python')
 
 st.write("Try questions now?")
-st.page_link("pages/Lesson1questions.py", label="Questions for Lesson 1")
+if st.button("Questions for Lesson 2"):
+    st.switch_page("pages/Lesson2questions.py")
