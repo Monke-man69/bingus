@@ -1,6 +1,8 @@
 import streamlit as st
 from answer import answers, strans, ttxt, refresh_page
 
+st.set_page_config(initial_sidebar_state="collapsed")
+
 st.title("Lesson 1: Questions for python Basics")
 
 if "tip_q1" not in st.session_state:
@@ -50,7 +52,7 @@ if not st.session_state.tip_q2_1:
         ttxt("Multiplications comes before addition", 3)
         st.session_state.tip_q2_1 = True
 
-q3 = strans("q3_string", ["""print("ninety nine dogs")""" , "print('ninety nine dogs')"], "How will you print 'ninety nine dogs")
+q3 = strans("q3_string", ["""print("ninety nine dogs")""" , "print('ninety nine dogs')"], "How will you print 'ninety nine dogs'")
 
 if not st.session_state.tip_q3:
     if st.button("Need a tip for Q3?"):

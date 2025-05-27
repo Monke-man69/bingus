@@ -2,6 +2,9 @@ import streamlit as st
 from answer import answers, strans, ttxt, refresh_page
 from streamlit_extras.switch_page_button import switch_page 
 
+st.set_page_config(initial_sidebar_state="collapsed")
+
+
 st.title("Lesson 1: Variable Basics")
 
 # --- Tip State Init ---
