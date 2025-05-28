@@ -18,7 +18,7 @@ lesson = [
     ("Lesson 8: Error Handling", "pages/Lesson8.py"),
     ("Lesson 9: Object-Orientation", "pages/Lesson9.py"),
     ("Lesson 10: Advanced Topics", "pages/Lesson10.py"),
-    ("Lesson 11: Final Project", "pages/Lesson11.py")
+    ("Lesson 11: Final Project", "pages/FinalProject.py")
 ]
 column = st.columns(3)
 
