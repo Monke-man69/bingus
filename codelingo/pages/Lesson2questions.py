@@ -4,7 +4,7 @@ from answer import answers, strans, ttxt, refresh_page
 st.set_page_config(initial_sidebar_state="collapsed")
 
 
-st.title("Lesson 1: Variable Basics")
+st.title("Lesson 2: Variable Basics")
 
 # --- Tip State Init ---
 if "tip_q1" not in st.session_state:

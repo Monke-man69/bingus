@@ -72,11 +72,13 @@ def wrong():
 
 def ttxt(tip, second):
     placeholder = st.empty()
-    for remaining in range(second, 0, -1):
-        placeholder.info(f"🕒 Your tip will appear in {remaining} seconds...")
+    for i in range(second, 0, -1):
+        placeholder.info(f"🕒 Your tip will appear in {i} seconds...")
         time.sleep(1)
     placeholder.success(tip)
 
 def refresh_page(delay: float = 0.5):
     time.sleep(delay)
     st.rerun()
+
+# def points(Yes, No, Total):
